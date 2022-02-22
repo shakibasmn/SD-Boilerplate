@@ -42,10 +42,12 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
         G4double Position = aStep->GetPreStepPoint()->GetPosition().z();
         const G4Track *track = aStep->GetTrack();
 
-        G4cout << "Edep= " <<eDeposit<< G4endl;
-        G4cout << "Pos= " <<Position<< G4endl;
+        G4cout << "Edep= " <<eDeposit/mm<< G4endl;
+        G4cout << "Pos= " <<Position/MeV<< G4endl;
         // Print(Position, eDeposit);
 
+        fEdep+=eDeposit;
+        Edepout (fEdep);
         G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
 
         analysisManager->FillH1(0, eDeposit);
@@ -54,6 +56,12 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 
     return true;
 }
+
+void MySensitiveDetector:: Edepout (G4double edep)
+{
+    G4cout<< "Total Energy Deposit= " <<fEdep<< G4endl;
+}
+
 
 // void MySensitiveDetector::Print(G4double pos, G4double edep)
 // {

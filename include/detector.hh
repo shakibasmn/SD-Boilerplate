@@ -13,6 +13,7 @@ public:
     void SetEdep(G4double de) { fEdep += de; }
     void SetPos(G4double z) { fPos = z; }
     void Print (G4double , G4double);
+    void Edepout (G4double);
 
 
     virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);

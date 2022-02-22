@@ -22,9 +22,9 @@ RunAction::RunAction(MyEventAction* eventAction) : G4UserRunAction(),fEventActio
  
 
 // Step information
-  analysisManager->CreateH1("0","Energy Spectrum",80,0,5.*MeV); 
+  analysisManager->CreateH1("0","Energy Spectrum",30,0,3.*MeV); 
 // analysisManager->CreateH1("1","Total Energy Spectrum",80,0,40.*MeV);
-  analysisManager -> CreateH2 ("0","2D Energy Spectrum", 55,-5*cm,20*cm,80,0,5.*MeV); 
+  analysisManager -> CreateH2 ("0","2D Energy Spectrum", 100,0.*mm,300*mm,30,0,3.*MeV); 
   
  // Final information 
   // analysisManager -> CreateH2 ("1","2D Total Energy Spectrum", 55,-11.*cm,11.*cm,80,0,40.*MeV);
