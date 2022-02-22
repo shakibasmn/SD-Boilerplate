@@ -2,8 +2,9 @@
 #define ACTION_HH
 
 #include "G4VUserActionInitialization.hh"
-#include "Event.hh"
 #include "generator.hh"
+#include "RunAction.hh"
+#include "Event.hh"
 
 class MyActionInitialization : public G4VUserActionInitialization
 {

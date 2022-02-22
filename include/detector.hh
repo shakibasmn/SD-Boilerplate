@@ -2,8 +2,6 @@
 #define DETECTOR_HH
 
 #include "G4VSensitiveDetector.hh"
-#include "Event.hh"
-#include "hit.hh"
 #include "G4SDManager.hh"
 
 
@@ -15,11 +13,7 @@ public:
 
 private:
     virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
-    virtual void Initialize(G4HCofThisEvent*HCE);
 
-  private:
-    DetectorHitsCollection* fHitsCollection;
-    G4int fHCID;
 
 };
 

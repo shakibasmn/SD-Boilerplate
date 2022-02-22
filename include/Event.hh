@@ -17,8 +17,6 @@ public:
   // virtual void Print();
 
 private:
-
-  G4int HCid;
 };
 
 #endif
