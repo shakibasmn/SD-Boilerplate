@@ -14,6 +14,9 @@
 #include "G4Gamma.hh"
 #include "g4analysis.hh"
 
+#include "G4ios.hh"
+#include <fstream>
+
 MySensitiveDetector::MySensitiveDetector(G4String name) : G4VSensitiveDetector(name)
 
 {
@@ -38,14 +41,25 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
     {
         G4double Position = aStep->GetPreStepPoint()->GetPosition().z();
         const G4Track *track = aStep->GetTrack();
-        G4double eKin = track->GetKineticEnergy();
+
+        G4cout << "Edep= " <<eDeposit<< G4endl;
+        G4cout << "Pos= " <<Position<< G4endl;
+        // Print(Position, eDeposit);
 
         G4AnalysisManager *analysisManager = G4AnalysisManager::Instance();
 
-        analysisManager->FillH1(0, eKin);
-        analysisManager->FillH2(0, Position, eKin);
-
+        analysisManager->FillH1(0, eDeposit);
+        analysisManager->FillH2(0, Position, eDeposit);
     }
 
     return true;
 }
+
+// void MySensitiveDetector::Print(G4double pos, G4double edep)
+// {
+//     std::ofstream file;
+//     file.open("output.csv" /*, std::ios::app*/);
+
+//     file << "z[cm] = , " << pos / cm << " , E[MeV]= ," << edep / MeV << G4endl; // Position/cm <<  << eKin/MeV <<
+//     file.close();
+// }
